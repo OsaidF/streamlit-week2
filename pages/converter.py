@@ -1,5 +1,11 @@
 import streamlit as st
 
+st.set_page_config(
+    page_title="Unit Converter",
+    page_icon=":scales:",
+    layout="centered"
+)
+
 class Conversion:
     def __init__(self, **kwargs):
         self.args = kwargs
@@ -17,8 +23,6 @@ class Unit():
     def __init__(self, name, **kwargs):
         self.name = name
         self.formulas = Formulas(**kwargs)
-
-
 
 # DEFINING UNIT TYPES IN LENGTH TYPE
 Centimetre = Unit('Centimetre', Inch = '{0}/2.54', Foot= '{0}/30.48', Yard = '{0}/91.44', Mile = '{0}/160900', Nanometer = '{0}*1e+7', Micrometre = '{0}*10000', Millimetre = '{0}*10', Metre = '{0}/100', Killometre= '{0}/100000')
@@ -183,4 +187,4 @@ final = format(round(eval(output), 2))
 st.header(f"{quantity} {unit1} = {final} {unit2}")
 st.caption(f"Exact value: {eval(output)} {unit2}")
 
-
+st.caption(f'Formula: ( {output} )')
